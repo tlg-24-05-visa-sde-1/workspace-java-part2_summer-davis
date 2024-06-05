@@ -8,7 +8,7 @@
  */
 package com.entertainment;
 
-public class Tuner {
+class Tuner {
     private int channel = 3;  // default channel for cable and satellite customers
 
     public int getChannel() {
