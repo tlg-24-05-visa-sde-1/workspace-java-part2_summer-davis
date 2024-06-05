@@ -51,6 +51,24 @@ public class Television {
   }
 
   @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || this.getClass() != obj.getClass()) {
+      return false;
+    }
+    Television other = (Television) obj;
+    return getVolume() == other.getVolume() &&
+           Objects.equals(this.getBrand(), other.getBrand());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getBrand(), getVolume());
+  }
+
+  /*  @Override
   public int hashCode() {
     // this is a poor hash function, because it easily yields "hash collisions"
     // a "hash collision" is when "different" objects happen to have the same hashcode by dumb luck.
@@ -59,15 +77,16 @@ public class Television {
     // this is a "scientifically correct" hash function, i.e.,
     // it minimizes the probability of hash collisions
     return Objects.hash(getBrand(), getVolume());
-  }
+  }*/
 
   // equals()
-  @Override
+/*  @Override
   public boolean equals(Object obj) {
     boolean result = false;
 
     // check that 'obj' is really referring to a Television object
-    if (obj instanceof Television) {
+    // if (obj instanceof Television) { // IS-A check
+    if (this.getClass() == obj.getClass()) { // are we the EXACT SAME TYPE?
       // downcast 'obj' to more specific reference type Television, for getName(), getAge()
       Television other = (Television) obj;
 
@@ -75,9 +94,8 @@ public class Television {
       result = Objects.equals(this.getBrand(), other.getBrand()) &&  // null-safe check
                this.getVolume() == other.getVolume();                // primitives can't be null
     }
-
     return result;
-  }
+  }*/
 
 
   // toString()
