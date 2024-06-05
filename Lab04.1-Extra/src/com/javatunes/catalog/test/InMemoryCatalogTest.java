@@ -35,6 +35,22 @@ class InMemoryCatalogTest {
     // testAveragePrice();
     // testFindCheapestAlbumInGenre();
     // testFindAveragePriceInGenre();
+    // testIsEachAlbumPrice10OrMore();
+    // testIsGenrePresent();
+  }
+
+  private static void testIsGenrePresent() {
+    InMemoryCatalog catalog = new InMemoryCatalog();
+
+    System.out.println("Should be true");
+    System.out.println(catalog.isGenrePresent(MusicCategory.POP));
+  }
+
+  private static void testIsEachAlbumPrice10OrMore() {
+    InMemoryCatalog catalog = new InMemoryCatalog();
+
+    System.out.println("Should be false");
+    System.out.println(catalog.isEachAlbumPrice10OrMore());
   }
 
   private static void testFindAveragePriceInGenre() {

@@ -244,12 +244,34 @@ public class InMemoryCatalog implements Catalog {
      * TASK: are all items priced at least $10?
      * This is a yes/no answer.
      */
+    public boolean isEachAlbumPrice10OrMore() {
+      boolean result = true;
+
+      for (MusicItem currentItem : catalogData) {
+        if (currentItem.getPrice() < 10) {
+          result = false;
+          break;
+        }
+      }
+      return result;
+    }
 
 
     /**
      * TASK: do we sell any items with the specified genre (MusicCategory)?
      * Another yes/no answer.
      */
+    public boolean isGenrePresent(MusicCategory category) {
+      boolean result = false;
+
+      for (MusicItem currentItem : catalogData) {
+        if (currentItem.getMusicCategory().equals(category)) {
+          result = true;
+          break;
+        }
+      }
+      return result;
+    }
 
 
     /**
