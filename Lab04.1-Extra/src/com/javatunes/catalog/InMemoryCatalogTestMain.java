@@ -6,15 +6,11 @@
  * Copyright LearningPatterns Inc.
  */
 
-package com.javatunes.catalog.test;
-
-import com.javatunes.catalog.InMemoryCatalog;
-import com.javatunes.catalog.MusicCategory;
-import com.javatunes.catalog.MusicItem;
+package com.javatunes.catalog;
 
 import java.util.Collection;
 
-class InMemoryCatalogTest {
+class InMemoryCatalogTestMain {
 
   /*
    * One by one, complete each test method below, and then "activate" it by
