@@ -29,7 +29,7 @@ public abstract class Employee implements TaxPayer, NamedEntity {
      * All employees get paid, but they implement this differently.
      * Method in base class but NO implementation.
      */
-    public abstract void pay();
+    public abstract double pay();
 
     /**
      * All employees work, and they all implement this the same way.
