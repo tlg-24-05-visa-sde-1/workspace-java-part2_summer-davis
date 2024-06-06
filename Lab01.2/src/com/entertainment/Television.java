@@ -3,8 +3,10 @@ package com.entertainment;
 import java.util.Objects;
 
 /*
- * Natural order is defined by brand (String).
- * brand is our "sort key".
+ * NOTE: to be consistent with equals, you must use the same sort key(s)
+ * as you're using in your equals() and hashCode() methods.
+ * Natural order is defined by brand (String), and then by volume (int).
+ * when tied on "brand".
  */
 public class Television implements Comparable<Television> {
 
@@ -55,7 +57,7 @@ public class Television implements Comparable<Television> {
   }
 
 
-    @Override
+  @Override
   public int hashCode() {
     // this is a poor hash function, because it easily yields "hash collisions"
     // a "hash collision" is when "different" objects happen to have the same hashcode by dumb luck.
@@ -89,7 +91,12 @@ public class Television implements Comparable<Television> {
 
   @Override
   public int compareTo(Television other) {
-    return this.getBrand().compareTo(other.getBrand());
+    int result = this.getBrand().compareTo(other.getBrand());
+
+    if (result == 0) { // tied on brand, so break the tie based on volume
+      result = Integer.compare(this.getVolume(), other.getVolume());
+    }
+    return result;
   }
 
   // toString()

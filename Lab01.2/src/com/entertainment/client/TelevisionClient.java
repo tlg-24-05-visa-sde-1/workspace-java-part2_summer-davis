@@ -13,13 +13,8 @@ class TelevisionClient {
     // examine == and the equals() method
     Television tvA = new Television("Sony", 50);
     Television tvB = new Television("Sony", 50);
-    Television tvC = new Television("Samsung", 32);
-    Television tvD = new Television("LG", 12);
-
-    System.out.println(tvA.hashCode());
-    System.out.println(tvB.hashCode());
-    System.out.println(tvC.hashCode());
-    System.out.println(tvD.hashCode());
+    Television tvC = new Television("Sony", 52);
+    Television tvD = new Television("Sony", 12);
 
     System.out.println("tvA == tvB: " + (tvA == tvB));
     System.out.println("tvA.equals(tvB): " + tvA.equals(tvB));
