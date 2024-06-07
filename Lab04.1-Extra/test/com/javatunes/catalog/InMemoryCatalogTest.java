@@ -17,6 +17,11 @@ public class InMemoryCatalogTest {
     catalog = new InMemoryCatalog();
   }
 
+  // findCheapRock()
+
+  @Test
+  public void findCheapRock_() {}
+
   // findSelfTitled()
   @Test
   public void findBySelfTitled_shouldReturnCollection() {
