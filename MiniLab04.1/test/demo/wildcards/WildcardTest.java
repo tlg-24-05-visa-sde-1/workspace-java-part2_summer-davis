@@ -37,8 +37,8 @@ public class WildcardTest {
         // sum() expects a Collection<Number> but I'm passing a Collection<Double>
         // that should be okay, right?
 
-        // double result = sum(doubles);
-        // assertEquals(5.92, result, .001);
+        double result = sum(doubles);
+        assertEquals(5.92, result, .001);
     }
 
     /*
@@ -46,7 +46,7 @@ public class WildcardTest {
      * that's the Principle of Substitutability and IS-A.
      * BUT WAIT: is Collection<Double> a subclass of Collection<Number> ???
      */
-    private double sum(Collection<Number> values) {
+    private double sum(Collection<? extends Number> values) {
         double sum = 0.0;
         for (Number number : values) {
             sum = sum + number.doubleValue();
