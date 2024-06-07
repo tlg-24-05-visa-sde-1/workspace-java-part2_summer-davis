@@ -22,7 +22,8 @@ public class ShoppingCartTest {
         cart.addItem(new MusicItem("CD-501"));
         cart.addItem(new MediaPlayer("MP3-LP150"));
         // sanity check, this qualifies as "too simple to fail"
-        // assertEquals(2, cart.size());
+        assertEquals(2, cart.size());
+        assertEquals(60.0, cart.total(), .001);
     }
 
     /**
@@ -38,7 +39,8 @@ public class ShoppingCartTest {
         cart.addItem(new MusicItem("CD-521"));
         cart.addItem(new MusicItem("CD-514"));
         // sanity check, this qualifies as "too simple to fail"
-        // assertEquals(2, cart.size());
+        assertEquals(2, cart.size());
+        assertEquals(20.0, cart.total(), .001);
     }
 
     /**
@@ -50,6 +52,7 @@ public class ShoppingCartTest {
         ShoppingCart<MediaPlayer> cart = new ShoppingCart<>();
         cart.addItem(new MediaPlayer("AAC-PL233"));
         // sanity check, this qualifies as "too simple to fail"
-        // assertEquals(1, cart.size());
+        assertEquals(1, cart.size());
+        assertEquals(50.0, cart.total(), .001);
     }
 }
