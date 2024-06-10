@@ -1,0 +1,32 @@
+I've uploaded a few demos that show wildcard type parameters in action:
+  <? extends E>
+  <?  super  E>
+
+Collection:
+  addAll(Collection<? extends E>)
+
+List:
+  sort(Comparator<? super E>)
+
+
+Both are well-commented, and you need to study them carefully.
+After looking it over, I think it will make more sense to you.
+
+Remember, the <? extends E> is way more common (like 90%).
+
+You can download them from the "In-Class Extras" folder up on MS Teams.
+  Part2_Demo_addAll-extends-E.zip
+  Part2_Demo_sort-super-E.zip
+
+Download these individually, move each one to the workspace directory,
+"extract to here," and then delete the zips.
+
+Bring them into IntelliJ the usual way, as new module from existing source.
+JUnit not needed.
+
+Demo_addAll-extends-E:
+  You really only need to study the client main-class EmployeeAddAllTest.
+
+Demo_sort-super-E:
+  Start with EmployeeHireDateComparator.
+  Then review the client main-class EmployeeSortTest.
