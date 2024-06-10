@@ -8,13 +8,15 @@
 
 package com.javatunes.corp.client;
 
+import com.javatunes.corp.Corporation;
+import gov.irs.IRS;
+
 class TaxClient {
 
     public static void main(String[] args) {
-        // TODO: get the IRS instance
-        // IRS irs = null;
+        // get the IRS instance
+        IRS irs = IRS.getInstance();
 
-        /* TODO: uncomment this block after completing the above TODO
         // create the Corporation and register it with the IRS
         Corporation corp = new Corporation("JavaTunes");
         irs.register(corp);
@@ -22,6 +24,5 @@ class TaxClient {
         // IRS collects taxes
         System.out.println("IRS collects taxes");
         irs.collectTaxes();
-        */
     }
 }
