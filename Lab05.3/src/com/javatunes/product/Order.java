@@ -15,7 +15,7 @@ import com.javatunes.billing.TaxCalculatorFactory;
 import java.util.Collection;
 
 public class Order {
-    private String id;
+    private final String id;
     private double cost;
     private final Location location;
 
