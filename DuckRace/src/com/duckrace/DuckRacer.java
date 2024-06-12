@@ -1,10 +1,11 @@
 package com.duckrace;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-class DuckRacer {
+class DuckRacer implements Serializable {
 
   // static properties/fields
 

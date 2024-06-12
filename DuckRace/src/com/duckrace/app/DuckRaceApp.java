@@ -11,7 +11,7 @@ import static com.duckrace.Reward.*;
  * and prompts user for inputs, then "passes" those inputs into the System.
  */
 public class DuckRaceApp {
-  private final Board board = new Board();
+  private final Board board = Board.getInstance();
   private final Scanner scanner = new Scanner(System.in);
 
   public void execute() {

@@ -1,6 +1,6 @@
 package com.duckrace;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -38,9 +38,37 @@ import java.util.*;
  *   17       17    Dom        1    DEBIT_CARD
  */
 
-public class Board {
+public class Board implements Serializable {
+  private static final String DATA_FILE_PATH = "data/board.dat";
+  private static final String STUDENT_ID_FILE_PATH = "conf/student-ids.csv";
+
+  /*
+   * Read from binary file data/board.dat or create new Board (if file not there).
+   * NOTE: new Board object only created the *very first time* the app is run.
+   */
+  public static Board getInstance() {
+    Board board = null;
+
+    if (Files.exists(Path.of(DATA_FILE_PATH))) {
+      try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
+        board = (Board) in.readObject();
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    else { // only happens the *very first time* we run the app (because the file isn't there)
+      board = new Board();
+    }
+    return board;
+  }
+
   private final Map<Integer, String> studentIdMap = loadStudentIdMap();
   private final Map<Integer, DuckRacer> racerMap = new TreeMap<>();
+
+  // prevent instantiation from outside
+  private Board() {
+  }
 
   /*
    * Updates the board (racerMap) by making a DuckRacer win.
@@ -58,13 +86,28 @@ public class Board {
       racerMap.put(id, racer);  // easy to forget this step
     }
     racer.win(reward);
+    save();
+  }
+
+  /*
+   * Writes 'this' board object to binary file data/board.dat.
+   * In more detail, we are using Java's built-in Object Serialization facility
+   * to write the state of this object to the file.
+   */
+  private void save() {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH))) {
+      out.writeObject(this); // write "me" (I am a Board object) to the file (as dust)
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   /*
    * This shows the data to the human user.
    * We need to show the right side of the map, ideally in an attractive way.
    *
-   * TODO: make it pretty, as close to the real board that we show in class as possible
+   * make it pretty, as close to the real board that we show in class as possible
    */
   public void show() {
     Collection<DuckRacer> racers = racerMap.values();
@@ -78,10 +121,11 @@ public class Board {
 
       for (DuckRacer racer : racers) {
         // System.out.println(racer);     // toString() automatically called
-        System.out.printf("%-3s       %-6s        %-4s         %s\n",
+        System.out.printf(" %-7s %-13s %-10s %s\n",
           racer.getId(), racer.getName(), racer.getWins(), racer.getRewards());
       }
     }
+    System.out.println();
   }
 
   // TESTING PURPOSES ONLY
@@ -96,7 +140,7 @@ public class Board {
     Map<Integer, String> map = new HashMap<>();
 
     try {
-      List<String> lines = Files.readAllLines(Path.of("conf/student-ids.csv"));
+      List<String> lines = Files.readAllLines(Path.of(STUDENT_ID_FILE_PATH));
       // for each line (String), we need to split it into "tokens" based on the comma
       // 1,Amir
       for (String line : lines) {
