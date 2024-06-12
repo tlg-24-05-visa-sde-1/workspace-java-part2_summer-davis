@@ -15,8 +15,9 @@ import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
 /**
- * TODO: use an annotation(s) in this class to apply some control over the order of test execution.
+ * use an annotation(s) in this class to apply some control over the order of test execution.
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MethodOrderTest {
 
     @Test
