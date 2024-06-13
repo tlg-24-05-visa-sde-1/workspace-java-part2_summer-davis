@@ -12,64 +12,68 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Department {
-    private String name;
-    private String location;
-    private Collection<Employee> employees = new ArrayList<>();
+  private String name;
+  private String location;
+  private Collection<Employee> employees = new ArrayList<>();
 
-    public Department() {
-    }
+  public Department() {}
 
-    public Department(String name, String location) {
-        setName(name);
-        setLocation(location);
-    }
+  public Department(String name, String location) {
+    setName(name);
+    setLocation(location);
+  }
 
-    public void listEmployees() {
-        for (Employee emp : employees) {
-            System.out.println(emp);
-        }
-    }
+  public void listEmployees() {
+    employees.forEach(emp -> System.out.println(emp));
 
-    public void workEmployees() {
-        for (Employee emp : employees) {
-            emp.work();
-        }
-    }
+    /*        for (Employee emp : employees) {
+        System.out.println(emp);
+    }*/
+  }
 
-    /**
-     * DONE: implement payEmployees() method by calling pay() on each Employee
-     * it will look similar to the workEmployees() method above
-     */
-    public void payEmployees() {
-        // DONE
-        for (Employee emp : employees) {
-            emp.pay();
-        }
-    }
+  public void workEmployees() {
+    employees.forEach(emp -> emp.work());
 
-    // helper method to add an Employee to the collection
-    public void addEmployee(Employee emp) {
-        employees.add(emp);
-    }
+/*    for (Employee emp : employees) {
+      emp.work();
+    }*/
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  /**
+   * DONE: implement payEmployees() method by calling pay() on each Employee it will look similar to
+   * the workEmployees() method above
+   */
+  public void payEmployees() {
+    employees.forEach(emp -> emp.pay());
 
-    public void setName(String name) {
-        this.name = name;
-    }
+/*    for (Employee emp : employees) {
+      emp.pay();
+    }*/
+  }
 
-    public String getLocation() {
-        return this.location;
-    }
+  // helper method to add an Employee to the collection
+  public void addEmployee(Employee emp) {
+    employees.add(emp);
+  }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + ": name=" + getName() + ", location=" + getLocation();
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getLocation() {
+    return this.location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + ": name=" + getName() + ", location=" + getLocation();
+  }
 }
