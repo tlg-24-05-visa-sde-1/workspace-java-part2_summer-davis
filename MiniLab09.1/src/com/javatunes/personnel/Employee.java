@@ -8,33 +8,31 @@
  */
 package com.javatunes.personnel;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Employee implements Comparable<Employee> {
     private Long id;
     private String name;
-    private Date hireDate;
+    private LocalDate hireDate;
     private Double salary;
-    private Department dept;
 
     public Employee(Long id) {
         this.id = id;
     }
 
-    public Employee(Long id, String name, String hireDate, Double salary, Department dept) {
-        this(id, name, Date.valueOf(hireDate), salary, dept);
+    public Employee(Long id, String name, String hireDate, Double salary) {
+        this(id, name, LocalDate.parse(hireDate), salary);
     }
 
-    public Employee(Long id, String name, Date hireDate, Double salary, Department dept) {
+    public Employee(Long id, String name, LocalDate hireDate, Double salary) {
         this.id = id;
         this.name = name;
         this.hireDate = hireDate;
         this.salary = salary;
-        this.dept = dept;
     }
 
     public void work() {
-        System.out.println(getName() + " working since " + getHireDate());
+        System.out.println(getName() + " working hard since " + getHireDate());
     }
 
     public void pay() {
@@ -49,7 +47,7 @@ public class Employee implements Comparable<Employee> {
         return name;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
@@ -61,23 +59,19 @@ public class Employee implements Comparable<Employee> {
         this.salary = salary;
     }
 
-    public Department getDepartment() {
-        return dept;
-    }
-
     @Override
     public boolean equals(Object compare) {
         boolean result = false;
         if (compare instanceof Employee) {
             Employee other = (Employee) compare;
-            result = this.id.equals(other.id);
+            result = this.getId().equals(other.getId());
         }
         return result;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return getId().hashCode();
     }
 
     @Override
@@ -87,6 +81,6 @@ public class Employee implements Comparable<Employee> {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " (id=" + getId() + ", name=" + getName() + ", hireDate=" + getHireDate() + ", salary=" + getSalary() + ")";
+        return getClass().getSimpleName() + " [id=" + getId() + ", name=" + getName() + ", hireDate=" + getHireDate() + ", salary=" + getSalary() + "]";
     }
 }
