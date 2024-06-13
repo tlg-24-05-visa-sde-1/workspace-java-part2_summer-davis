@@ -21,10 +21,10 @@ import java.util.Collections;
  * It contains getter methods for name, location, employees.
  */
 public class Department {
-    private String name = "Sales";
-    private String location = "Seattle";
+    private final String name = "Sales";
+    private final String location = "Seattle";
 
-    private Collection<Employee> employees = Arrays.asList(
+    private final Collection<Employee> employees = Arrays.asList(
                       /* id      name          hireDate       salary */
             new Employee(1L,    "Jane",       "2009-07-01",   50000.0),
             new Employee(2L,    "Morgan",     "2009-12-05",   34000.0),
