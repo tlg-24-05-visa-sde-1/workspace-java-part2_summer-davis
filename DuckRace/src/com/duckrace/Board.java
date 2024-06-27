@@ -111,6 +111,17 @@ public class Board implements Serializable {
    */
   public void show() {
     Collection<DuckRacer> racers = racerMap.values();
+    // HOW WOULD YOU LIKE TO SEE THE MENU?
+    /*
+     * 1. Top 3 highest rated
+     * 2. Cheapest
+     *
+     * Are you ready to order or do you still need time to look?
+     */
+
+
+
+
 
     if (racerMap.isEmpty()) {
       System.out.println("There are currently no results to show");
